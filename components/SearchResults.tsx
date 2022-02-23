@@ -3,21 +3,17 @@ import { ProductItem } from "./ProductItem"
 
 type SearchResultProps = {
   results: Array<{
-    id: number,
-    price: number,
-    title: string
+    id: number
+    price: number
+    title: string,
+    priceFormatted: string
   }>,
+  totalPrice: number
   addToWishlist: (id: number) => void
 }
 
-export function SearchResults({results, addToWishlist}: SearchResultProps) {
-  const totalPrice = useMemo(() => {
-    return results.reduce((acc, product) => {
-      return acc + product.price
-    }, 0)
-  }, [results])
-
-
+export function SearchResults({results, totalPrice, addToWishlist}: SearchResultProps) {
+  
   return (
     <div>
       <div>
